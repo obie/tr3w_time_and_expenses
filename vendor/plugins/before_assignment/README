@@ -1,0 +1,50 @@
+BeforeAssignment Plugin for Ruby on Rails
+Copyright (c) 2006 Obie Fernandez
+==================
+
+Plugin makes it possible to add a before_assignment callback to a
+belongs_to association, which enables things such as type and
+validity checking at the time of assignment instead of having to
+rely on later validation.
+
+The idea came up while researching the :conditions option for
+belongs_to. I realized that Rails doesn't prevent you from
+assigning a bogus value -- even worse, you will be confused when
+you try to retrieve it later and nothing is there.
+
+Some caboosers argued that this is not needed, because you can
+check the validity of the assignment as part of the validation
+rules for the model with the belongs_to association. To which I
+say: "Not always!"
+
+Sure, there might be cases where it makes sense to check the
+validity of an assignment to belongs_to as part of the validation
+routines of the model. But in cases where a wrong assignment is
+NOT a state that is reachable normally by the end user, then I
+believe that it is better to *fail fast*!
+
+If there is a programmer error or a hacker trying to breach my
+security, I want to know about it right away and in an explicit
+fashion.
+
+Example
+
+class Approvable < ActiveRecord::Base
+  belongs_to :approver,
+             :class_name => 'User',
+             :foreign_key => 'approver_id',
+             :conditions => ['authorized_approver = ?', true],
+             :extend => CheckApproverExtension  
+end
+
+module CheckApproverExtension
+  def before_assignment(approver)
+    raise UnauthorizedApproverException unless approver.authorized_approver
+  end
+end
+
+Note: Rails (as of rev 5523) supports extension of a belongs_to
+association, but it isn't documented. I believe that it's
+perfectly valid to extend a belongs_to relationship, and that
+belongs_to should accept a block parameter for extension methods,
+exactly how other associations do.

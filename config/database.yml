@@ -1,0 +1,13 @@
+development:
+  adapter: mysql
+  database: time_and_expenses_development
+  username: root
+  password:
+  host: localhost
+
+test:
+  adapter: mysql
+  database: time_and_expenses_test
+  username: root
+  password:
+  host: localhost

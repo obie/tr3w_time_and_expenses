@@ -1,0 +1,2 @@
+module BillableWeeksHelper
+end

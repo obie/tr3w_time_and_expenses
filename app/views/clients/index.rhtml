@@ -1,0 +1,22 @@
+<h1>Listing clients</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+  </tr>
+  
+<% for client in @clients %>
+  <tr>
+    <td><%=h client.name %></td>
+    <td><%=h client.code %></td>
+    <td><%= link_to 'Show', client_path(client) %></td>
+    <td><%= link_to 'Edit', edit_client_path(client) %></td>
+    <td><%= link_to 'Destroy', client_path(client), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New client', new_client_path %>

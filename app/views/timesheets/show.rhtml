@@ -1,0 +1,40 @@
+<h1>Manage timesheet</h1>
+<h2>Billable weeks</h2>
+
+<table border="1">
+
+  <tr><th>Starting date</th><th>Client</th><th>Billing code</th><th>Hours</th></tr>
+  <% @timesheet.billable_weeks.each do |bw| %>
+    <tr><td><%= bw.start_date.strftime("%m/%d/%y") %></td>
+        <td><%= bw.client.name %></td>
+        <td><%= bw.billing_code %></td>
+        <td><%= bw.total_hours %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% if @timesheet.submitted %>
+<p>(Timesheet has been submitted.)</p>
+<% else %>
+<p>Add a billable week:</p>
+
+<% form_for "billable_week", 
+  :url => add_week_url(:timesheet_id => @timesheet.id) do |f| %>
+
+<p>Client: <%= f.select "client_id", @clients.map {|c| [c.name, c.id] } %></p>
+
+<p>Start date: <%= select_date %></p>
+<% %w{ Mon Tues Wednes Thurs Fri Satur Sun }.each do |day| %>
+<p><%= day %>day hours: <%= f.text_field "#{day.downcase}day_hours" %></p>
+<% end %>
+
+<%= submit_tag "Add week to timesheet" %>
+
+<% end %>
+
+
+<p><%= link_to "Submit timesheet for payment",
+            :controller => "timesheets",
+            :action => "submit",
+            :id => @timesheet.id %></p>
+<% end %>

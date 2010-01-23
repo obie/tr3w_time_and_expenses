@@ -1,0 +1,22 @@
+<h1>Listing billing_codes</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Description</th>
+  </tr>
+  
+<% for billing_code in @billing_codes %>
+  <tr>
+    <td><%=h billing_code.code %></td>
+    <td><%=h billing_code.description %></td>
+    <td><%= link_to 'Show', billing_code_path(@client, billing_code) %></td>
+    <td><%= link_to 'Edit', edit_billing_code_path(@client, billing_code) %></td>
+    <td><%= link_to 'Destroy', billing_code_path(@client, billing_code), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New billing_code', new_billing_code_path(@client) %>

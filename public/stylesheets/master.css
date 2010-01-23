@@ -1,0 +1,11 @@
+/* CORE
+-------------------------------------*/
+
+/* CORE#form.horiz
+-------------------------------------*/
+
+form.horiz dl {  border: 10px solid #ccc; margin: 10px; padding: 20px; min-width: 600px; }
+form.horiz dl dt, form dl dd { padding: 10px; border-bottom: 1px dashed #e7e7e7; line-height: 25px; }
+form.horiz dl dt { width: 200px; float: left; text-align: left; }
+form.horiz dl dd { }
+form.horiz dl small { color: #99c; margin-left: 20px;  }

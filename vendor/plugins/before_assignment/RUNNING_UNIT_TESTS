@@ -1,0 +1,28 @@
+== Creating the test database
+
+Unless you are using SQLite, you will have to create the database, matching
+the parameters specified in test/database.yml
+
+== Running the test
+
+Set ENV['DB'] to something other than 'sqlite3' if you need to, otherwise you're good to go.
+
+To run the unit test, just run the unit test. :)
+ruby test/before_assignment_test.rb
+
+If you see the following, then everything is good:
+
+-- create_table("approvables", {:force=>true})
+   -> 0.1321s
+-- create_table("users", {:force=>true})
+   -> 0.0056s
+-- initialize_schema_information()
+   -> 0.0005s
+-- columns("schema_info")
+   -> 0.0010s
+Loaded suite test/before_assignment_test
+Started
+..
+Finished in 0.022944 seconds.
+
+2 tests, 2 assertions, 0 failures, 0 errors

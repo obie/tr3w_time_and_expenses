@@ -1,0 +1,10 @@
+<div class="client">
+  <label>Name:</label>
+  <span class="name"><%=h @client.name %></span>
+  <label>Code:</label>
+  <span class="code"><%=h @client.code %></span>
+</div>
+
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

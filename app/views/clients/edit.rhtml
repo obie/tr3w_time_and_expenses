@@ -1,0 +1,20 @@
+<h1>Editing client</h1>
+
+<% form_for(:client, :url => client_path(@client), :html => { :method => :put }) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Code</b><br />
+    <%= f.text_field :code %>
+  </p>
+
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', client_path(@client) %> |
+<%= link_to 'Back', clients_path %>
