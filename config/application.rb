@@ -9,4 +9,4 @@ end
 # Include your application configuration below
 # ExceptionNotifier.exception_recipients = %w( jhubert@gmail.com )
 
-# require 'fixture_helpers'
+require 'factory_girl'

@@ -4,6 +4,7 @@
 gem "rails", :git => "git://github.com/rails/rails.git"
 
 ## Bundle the gems you use:
+gem "factory_girl", "1.2.3"
 gem "haml"
 # gem "bj"
 # gem "hpricot", "0.6"
