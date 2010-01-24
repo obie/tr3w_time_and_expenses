@@ -1,10 +1,13 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-context "Having loaded clients fixtures..." do
-  fixtures :clients
+describe Client do
+  before do
+    Factory(:client)
+    Factory(:client, :code => "C1", :name => "Client One")
+  end
 
   specify "There should be two Clients" do
-    Client.count.should_be 2
+    Client.count.should == 2
   end
 
   specify "Client One should be findable by its code C1" do
