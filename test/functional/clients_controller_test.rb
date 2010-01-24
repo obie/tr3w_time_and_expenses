@@ -1,17 +1,7 @@
-require File.dirname(__FILE__) + '/../test_helper'
-require 'clients_controller'
+require 'test_helper'
 
-# Re-raise errors caught by the controller.
-class ClientsController; def rescue_action(e) raise e end; end
-
-class ClientsControllerTest < ActiveSupport::TestCase
+class ClientsControllerTest < ActionController::TestCase
   fixtures :clients
-
-  def setup
-    @controller = ClientsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
 
   def test_should_get_index
     get :index

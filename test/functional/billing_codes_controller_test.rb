@@ -1,17 +1,7 @@
-require File.dirname(__FILE__) + '/../test_helper'
-require 'billing_codes_controller'
+require 'test_helper'
 
-# Re-raise errors caught by the controller.
-class BillingCodesController; def rescue_action(e) raise e end; end
-
-class BillingCodesControllerTest < ActiveSupport::TestCase
+class BillingCodesControllerTest < ActionController::TestCase
   fixtures :clients, :billing_codes
-
-  def setup
-    @controller = BillingCodesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
 
   def test_should_get_index
     get :index, :client_id => 1
