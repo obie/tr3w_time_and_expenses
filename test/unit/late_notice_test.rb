@@ -11,8 +11,8 @@ class LateNoticeTest < ActiveSupport::TestCase
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
 
-    @expected = TMail::Mail.new
-    @expected.set_content_type "text", "plain", { "charset" => CHARSET }
+    @expected = Mail.new
+    @expected.content_type "text/plain;charset=#{CHARSET}"
     @expected.mime_version = '1.0'
   end
   
