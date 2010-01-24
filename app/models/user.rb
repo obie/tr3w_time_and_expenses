@@ -1,12 +1,20 @@
 require 'digest/sha1'
-class User < ActiveRecord::Base
 
-  has_many :timesheets
+class User < ActiveRecord::Base
+  
+  belongs_to :client, :include => :billable_weeks
+
+  has_many :timesheets,
+           :before_remove => :check_timesheet_destruction,
+           :dependent => :destroy,
+           :inverse_of => :user
+  
   has_many :billable_weeks, :through => :timesheets
   
   has_many :expense_reports
   
-  has_many :draft_timesheets, :conditions => ["submitted = ?", false ], :foreign_key => 'user_id', :class_name => 'Timesheet'
+  has_many :draft_timesheets, :class_name => 'Timesheet',
+                              :conditions => { :submitted => false }
   
   has_one :last_timesheet, :class_name => 'Timesheet', :order => 'created_at desc'
   has_one :avatar, :dependent => :destroy
@@ -67,14 +75,21 @@ class User < ActiveRecord::Base
   end
 
   protected
-    # before filter 
-    def encrypt_password
-      return if password.blank?
-      self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
-      self.crypted_password = encrypt(password)
+  
+  def check_timesheet_destruction(timesheet)
+    if timesheet.submitted?
+      raise TimesheetError, "Cannot destroy a submitted timesheet."
     end
-    
-    def password_required?
-      crypted_password.blank? || !password.blank?
-    end
+  end
+
+  # before filter 
+  def encrypt_password
+    return if password.blank?
+    self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
+    self.crypted_password = encrypt(password)
+  end
+  
+  def password_required?
+    crypted_password.blank? || !password.blank?
+  end
 end

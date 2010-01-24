@@ -7,4 +7,5 @@ class Client < ActiveRecord::Base
            :source => :contact
   has_many :business_contacts, :through => :contact_cards, 
            :source => :contact
+  has_many :users, :dependent => :destroy
 end

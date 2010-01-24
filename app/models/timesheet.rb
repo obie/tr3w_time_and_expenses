@@ -5,8 +5,8 @@ class Timesheet < ActiveRecord::Base
              :conditions => ['authorized_approver = ?', true],
              :extend => CheckApproverExtension
   
-  belongs_to :user
-  
+  belongs_to :user, :validate => true
+
   has_many :billable_weeks, :include => [:billing_code]
 
   def self.billable_hours_outstanding_for(user)

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 18) do
+ActiveRecord::Schema.define(:version => 20100124191217) do
 
   create_table "avatars", :force => true do |t|
     t.integer "user_id"
@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(:version => 18) do
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
     t.boolean  "authorized_approver"
+    t.integer  "client_id"
+    t.datetime "timesheets_updated_at"
   end
 
 end
