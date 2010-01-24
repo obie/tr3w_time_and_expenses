@@ -1,13 +1,3 @@
-# == Schema Information
-#
-# Table name: billing_codes
-#
-#  id          :integer(11)   not null, primary key
-#  client_id   :integer(11)   
-#  code        :string(255)   
-#  description :text          
-#
-
 class BillingCode < ActiveRecord::Base
   has_and_belongs_to_many :related,
     :join_table => 'related_billing_codes',

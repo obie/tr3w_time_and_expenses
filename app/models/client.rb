@@ -1,14 +1,3 @@
-# == Schema Information
-#
-# Table name: clients
-#
-#  id         :integer(11)   not null, primary key
-#  name       :string(255)   
-#  code       :string(255)   
-#  created_at :datetime      
-#  updated_at :datetime      
-#
-
 class Client < ActiveRecord::Base
   has_many :billing_codes
   has_many :billable_weeks
