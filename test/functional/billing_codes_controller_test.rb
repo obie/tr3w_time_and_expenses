@@ -19,7 +19,7 @@ class BillingCodesControllerTest < ActionController::TestCase
     post :create, :billing_code => { }, :client_id => 1
     assert_equal old_count+1, BillingCode.count
     
-    assert_redirected_to billing_code_path(clients(:one), assigns(:billing_code))
+    assert_redirected_to client_billing_code_path(clients(:one), assigns(:billing_code))
   end
 
   def test_should_show_billing_code
@@ -34,7 +34,7 @@ class BillingCodesControllerTest < ActionController::TestCase
   
   def test_should_update_billing_code
     put :update, :id => 1, :billing_code => { }, :client_id => 1
-    assert_redirected_to billing_code_path(clients(:one), assigns(:billing_code))
+    assert_redirected_to client_billing_code_path(clients(:one), assigns(:billing_code))
   end
   
   def test_should_destroy_billing_code
@@ -42,6 +42,6 @@ class BillingCodesControllerTest < ActionController::TestCase
     delete :destroy, :id => 1, :client_id => 1
     assert_equal old_count-1, BillingCode.count
     
-    assert_redirected_to billing_codes_path
+    assert_redirected_to client_billing_codes_path(clients(:one))
   end
 end

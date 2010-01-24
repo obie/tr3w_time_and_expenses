@@ -1,6 +1,6 @@
 <h1>Editing billing_code</h1>
 
-<% form_for(:billing_code, :url => billing_code_path(@billing_code), :html => { :method => :put }) do |f| %>
+<% form_for [@client, @billing_code] do |f| %>
   <p>
     <b>Code</b><br />
     <%= f.text_field :code %>
@@ -16,5 +16,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', billing_code_path(@billing_code) %> |
-<%= link_to 'Back', billing_codes_path %>
+<%= link_to 'Show', client_billing_code_path(@client, @billing_code) %> |
+<%= link_to 'Back', client_billing_codes_path(@client) %>

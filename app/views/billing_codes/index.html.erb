@@ -10,13 +10,13 @@
   <tr>
     <td><%=h billing_code.code %></td>
     <td><%=h billing_code.description %></td>
-    <td><%= link_to 'Show', billing_code_path(@client, billing_code) %></td>
-    <td><%= link_to 'Edit', edit_billing_code_path(@client, billing_code) %></td>
-    <td><%= link_to 'Destroy', billing_code_path(@client, billing_code), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', client_billing_code_path(@client, billing_code) %></td>
+    <td><%= link_to 'Edit', edit_client_billing_code_path(@client, billing_code) %></td>
+    <td><%= link_to 'Destroy', cilent_billing_code_path(@client, billing_code), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New billing_code', new_billing_code_path(@client) %>
+<%= link_to 'New billing_code', new_client_billing_code_path(@client) %>

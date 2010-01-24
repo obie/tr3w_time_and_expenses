@@ -2,8 +2,9 @@ TimeAndExpenses::Application.routes.draw do |map|
 
   root :to => 'general#index'
 
-  resources :billing_codes
-  resources :clients
+  resources :clients do
+    resources :billing_codes
+  end
 
   # Stuff for chapter on named routes (not restful):
 

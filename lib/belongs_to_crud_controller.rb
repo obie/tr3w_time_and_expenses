@@ -10,7 +10,7 @@ class BelongsToCrudController < CrudController
     set_singular(current_model.new(params_hash))
     if get_singular.save
       get_parents_children << get_singular
-      redirect_to options_for_redirect(:action => :show, :id => get_singular.id)
+      redirect_to [get_parent, get_singular]
     else
       render :action => :new
     end
