@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
-require File.dirname(__FILE__) + '/../config/boot'
-require 'commands/runner'
+require File.expand_path('../../config/boot',  __FILE__)
+require 'rails/commands/runner'
+require File.expand_path('../../config/environment',  __FILE__)

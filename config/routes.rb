@@ -1,4 +1,4 @@
-ActionController::Routing::Routes.draw do |map|
+TimeAndExpenses::Application.routes.draw do |map|
 
   map.home '', :controller => 'general'
 

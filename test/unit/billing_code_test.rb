@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class BillingCodeTest < Test::Unit::TestCase
+class BillingCodeTest < ActiveSupport::TestCase
   fixtures :billing_codes
 
   def test_self_referential_bidirectional_habtm_association

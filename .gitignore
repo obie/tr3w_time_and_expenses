@@ -7,4 +7,6 @@
 /tmp/pids/*
 /tmp/sessions/*
 /tmp/sockets/*
+/vendor/gems
+/bin
 .DS_Store

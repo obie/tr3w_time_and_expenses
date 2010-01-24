@@ -1,40 +1,26 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>500 Application Error</title>
-    <style type="text/css">
-      body { font-family: Arial, Verdana, Helvetica, Sans-serif; margin: 0; padding: 20px; }
+<head>
+  <title>We're sorry, but something went wrong (500)</title>
+  <style type="text/css">
+    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
+    div.dialog {
+      width: 25em;
+      padding: 0 4em;
+      margin: 4em auto 0 auto;
+      border: 1px solid #ccc;
+      border-right-color: #999;
+      border-bottom-color: #999;
+    }
+    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+  </style>
+</head>
 
-      h1 { color: #ff0; background-color: #000; padding: 10px 20px; margin: -20px; margin-bottom: 20px; }
-      h1,h2 { font-family: Arial Black; letter-spacing: 2pt; font-weight: normal; }
-
-      a:link, a:visited { color: #999; }
-      a:hover, a:active { color: #333; }
-      li { margin: 5px 0; }
-
-      dt { font-weight: bold; margin: 5px; }
-      dd { color: #666; }
-      
-      .important { font-weight: bold; }
-      .alert { color: #f00; }
-    </style>
-  </head>
 <body>
-  <h1>500 - Application Error</h1>
-  <p>We are sorry, but it seems that there has been an error on the site. Do not worry, this probably is not your fault.</p>
-  <p class="important alert">Be assured, however, that we are on top of it. A detailed message has been sent to our operations center detailing this error and they are already working on it.</p>
-  <h2>Common Reasons</h2>
-  <p>Most likely, this is the due to:</p>
-  <dl>
-    <dt>A process on the server is in the middle of being restarted.</dt>
-    <dd>Often times, the backend of a website needs to be reloaded for maintenance and upgrades. If this is the case, this error should not happen again in a few seconds.  Try reloading the page.</dd>
-    <dt>A feature of the site just plain doesn't work.</dt>
-    <dd>If you continue to try doing something and it keeps generating this error page, that means it doesn't work right now.  Either we are updating it and we have not finished, or you found a feature that you weren't supposed to find. Either way, we are sorry, and we're on it.</dd>
-    <dt>It's a real, live catastrophic error.</dt>
-    <dd>DO NOT PANIC. We are well trained professionals. We're on it and it will be resolved ASAP.</dd>
-  </ol>
-  <h2>Would you like to try?</h2>
-  <p>Pressing the <strong>back button</strong>, pressing the <strong>refresh button</strong> or going to the <%= link_to 'home page', :controller => '' %>.</p>
+  <!-- This file lives in public/500.html -->
+  <div class="dialog">
+    <h1>We're sorry, but something went wrong.</h1>
+    <p>We've been notified about this issue and we'll take a look at it shortly.</p>
+  </div>
 </body>
 </html>

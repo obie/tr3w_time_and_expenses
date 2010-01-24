@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class TimesheetTest < Test::Unit::TestCase
+class TimesheetTest < ActiveSupport::TestCase
   
   fixtures :timesheets, :users
   

@@ -9,7 +9,7 @@
 # and then translate your tests:
 #   test2spec --specdir spec/models test/unit
 #   test2spec --specdir spec/controllers test/functional
-class Test::Unit::TestCase
+class ActiveSupport::TestCase
   def self.fixture_path=(p)
   end
   

@@ -15,7 +15,7 @@
 #
 
 quentin:
-  id: <%= auto_increment %>
+  id: 1
   login: quentin
   email: quentin@example.com
   salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
@@ -24,7 +24,7 @@ quentin:
   created_at: <%= 5.days.ago.to_s :db %>
   # activated_at: <%= 5.days.ago.to_s :db %> # only if you're activating new signups
 aaron:
-  id: <%= auto_increment %>
+  id: 2
   login: aaron
   email: aaron@example.com
   salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
@@ -32,21 +32,21 @@ aaron:
   # activation_code: aaronscode # only if you're activating new signups
   created_at: <%= 1.days.ago.to_s :db %>
 david:
-  id: <%= auto_increment %>
+  id: 3
   login: dblack
   email: dblack@wobblini.net
   salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
   created_at: <%= Time.parse("December 1 2006 17:34") %>
 approver:
-  id: <%= auto_increment %>
+  id: 4
   login: "manager"
   authorized_approver: true
 approver2:
-  id: <%= auto_increment %>
+  id: 5
   login: "manager2"
   authorized_approver: true
 joe:
-  id: <%= auto_increment %>
+  id: 6
   login: "joe"
   authorized_approver: false

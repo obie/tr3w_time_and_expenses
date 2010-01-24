@@ -4,7 +4,7 @@ require 'billing_codes_controller'
 # Re-raise errors caught by the controller.
 class BillingCodesController; def rescue_action(e) raise e end; end
 
-class BillingCodesControllerTest < Test::Unit::TestCase
+class BillingCodesControllerTest < ActiveSupport::TestCase
   fixtures :clients, :billing_codes
 
   def setup
