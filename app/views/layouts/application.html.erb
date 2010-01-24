@@ -35,7 +35,7 @@
 	      <h1><%= @page_title || "Time and Expenses" %></h1>
 	      <div id="login_message">
           <% if logged_in? -%>
-            <span><%= "Logged in as <strong>#{current_user.login}</strong>" %></span>
+            <span><%= "Logged in as <strong>#{current_user.login}</strong>".html_safe! %></span>
             <span>|</span>
             <span><%= link_to "Logout", :controller => 'account', :action => 'logout' %></span>
           <% else -%>
