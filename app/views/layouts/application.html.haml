@@ -1,0 +1,25 @@
+!!! Strict
+%html{html_attrs(I18n.locale)}
+  %head
+    %meta(http-equiv='Content-Type' content='text/html;charset=utf-8')
+    %meta(http-equiv='Content-Script-Type' content='text/javascript')
+    %title TR3W Time and Expenses
+    = stylesheet_link_tag 'master'
+    = javascript_tag :defaults
+  %body
+    #header
+      %h1= link_to @page_title || "Time and Expenses", root_path
+      #login_message
+        - if logged_in?
+          %span
+            Logged in as
+            %strong= current_user.login
+          %span
+            |
+          %span= link_to "Log out", :controller => 'account', :action => 'logout'
+        - else
+          %span= link_to "Log in", :controller => 'account', :action => 'login'
+          %span
+            |
+          %span= link_to "Sign up", :controller => 'account', :action => 'signup'
+    #content= yield
