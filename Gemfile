@@ -12,8 +12,7 @@ gem "haml"
 # gem "aws-s3", :require_as => "aws/s3"
 
 ## Bundle gems used only in certain environments:
-gem "rspec", '2.0.0.a2', :only => :test
-gem "rspec-rails", '2.0.0.a2', :only => :test
+gem "rspec-rails", '2.0.0.a7', :group => :test
 # only :test do
 #   gem "webrat"
 # end
