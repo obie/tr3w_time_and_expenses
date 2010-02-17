@@ -1,7 +1,7 @@
 # Edit this Gemfile to bundle your application's dependencies.
 
 ## Bundle edge rails:
-gem "rails", :git => "git://github.com/rails/rails.git"
+gem "rails", '3.0.0.beta'
 
 ## Bundle the gems you use:
 gem "factory_girl", "1.2.3"
