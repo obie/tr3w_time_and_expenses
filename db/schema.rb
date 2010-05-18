@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100124191217) do
+ActiveRecord::Schema.define(:version => 20100517220121) do
 
   create_table "avatars", :force => true do |t|
     t.integer "user_id"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(:version => 20100124191217) do
   end
 
   create_table "timesheets", :force => true do |t|
-    t.boolean  "submitted"
+    t.boolean  "submitted",    :default => false
     t.integer  "user_id"
     t.datetime "updated_at"
     t.datetime "created_at"
