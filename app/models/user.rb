@@ -1,24 +1,19 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
-  
+
   belongs_to :client, :include => :billable_weeks
 
   has_many :timesheets,
            :before_remove => :check_timesheet_destruction,
            :dependent => :destroy,
            :inverse_of => :user
-  
+
   has_many :billable_weeks, :through => :timesheets
-  
+
   has_many :expense_reports
-  
-  has_many :draft_timesheets, :class_name => 'Timesheet',
-                              :conditions => { :submitted => false }
-  
-  has_one :last_timesheet, :class_name => 'Timesheet', :order => 'created_at desc'
+
   has_one :avatar, :dependent => :destroy
-  private :last_timesheet
 
   #------------------------------------------------- 
   # Acts As Authenticated Defaults
@@ -57,6 +52,10 @@ class User < ActiveRecord::Base
     crypted_password == encrypt(password)
   end
 
+  def draft_timesheets
+    timesheets.draft
+  end
+
   def remember_token?
     remember_token_expires_at && Time.now.utc < remember_token_expires_at 
   end
@@ -75,7 +74,7 @@ class User < ActiveRecord::Base
   end
 
   protected
-  
+
   def check_timesheet_destruction(timesheet)
     if timesheet.submitted?
       raise TimesheetError, "Cannot destroy a submitted timesheet."
@@ -88,8 +87,15 @@ class User < ActiveRecord::Base
     self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
     self.crypted_password = encrypt(password)
   end
-  
+
   def password_required?
     crypted_password.blank? || !password.blank?
   end
+
+  private
+
+  def last_timesheet
+    timesheets.latest[0]
+  end
+
 end

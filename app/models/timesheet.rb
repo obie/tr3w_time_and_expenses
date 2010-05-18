@@ -4,10 +4,13 @@ class Timesheet < ActiveRecord::Base
              :foreign_key => 'approver_id',
              :conditions => ['authorized_approver = ?', true],
              :extend => CheckApproverExtension
-  
+
   belongs_to :user, :validate => true
 
   has_many :billable_weeks, :include => [:billing_code]
+
+  scope :draft, where(:submitted => false)
+  scope :latest, order('created_at desc').limit(1)
 
   def self.billable_hours_outstanding_for(user)
     user.timesheets.map(&:billable_hours_outstanding).sum
