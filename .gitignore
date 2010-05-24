@@ -10,3 +10,4 @@
 /vendor/gems
 /bin
 .DS_Store
+.bundle
