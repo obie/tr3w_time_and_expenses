@@ -3,6 +3,11 @@ TimeAndExpenses::Application.routes.draw do |map|
   root :to => 'general#index'
 
   resources :clients do
+    collection do
+      get :recent
+      get :newest
+    end
+
     resources :billing_codes
   end
 

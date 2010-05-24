@@ -2,7 +2,16 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.xml
   def index
-    @clients = Client.find(:all)
+    @clients = Client.where(params.except(:action, :controller, :format))
+
+    respond_to do |format|
+      format.html # index.rhtml
+      format.xml { render :xml => @clients.to_xml }
+    end
+  end
+
+  def recent
+    @clients = Client.recent
 
     respond_to do |format|
       format.html # index.rhtml
@@ -10,6 +19,15 @@ class ClientsController < ApplicationController
     end
   end
 
+  def newest
+    @client = Client.recent.first
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @client }
+    end
+  end
+  
   # GET /clients/1
   # GET /clients/1.xml
   def show
@@ -40,10 +58,10 @@ class ClientsController < ApplicationController
       if @client.save
         flash[:notice] = 'Client was successfully created.'
         format.html { redirect_to client_path(@client) }
-        format.xml  { head :created, :location => client_path(@client) }
+        format.xml  { head :created, :location => @client }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @client.errors.to_xml }
+        format.xml  { render :xml => @client.errors.to_xml, :status => :unprocessable_entity }
       end
     end
   end
