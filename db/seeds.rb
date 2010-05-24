@@ -10,6 +10,7 @@ user = User.create(:login => 'obie',
                    :authorized_approver => true)
 
 Client.delete_all
+Client.create(:name => 'Aardworkers', :code => 'AARD', :created_at => 2.years.ago)
 client = Client.create(:name => 'Zorganization', :code => 'ZORG')
 
 BillingCode.delete_all
