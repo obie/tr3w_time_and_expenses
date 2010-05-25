@@ -11,9 +11,9 @@
 
   - for client in @clients
     %tr[client]
-      %td=h client.name
-      %td=h client.code
-      %td.draft_timesheets_count=h client.timesheets.draft.count
+      %td= client.name
+      %td= client.code
+      %td.draft_timesheets_count= client.timesheets.draft.count
       %td= link_to 'Show', client_path(client)
       %td= link_to 'Edit', edit_client_path(client)
       %td= link_to 'Destroy', client_path(client), :confirm => 'Are you sure?', :method => :delete
