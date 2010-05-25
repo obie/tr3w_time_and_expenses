@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   respond_to :html, :xml, :json
+
   # GET /clients
   # GET /clients.xml
   # GET /clients.json
@@ -8,12 +9,13 @@ class ClientsController < ApplicationController
     respond_with(@clients)
   end
 
-  def draft_timesheets_count
-    @clients = Client.all
-    @timesheets = @clients.map do |client|
-      { :id => client.id, :draft_timesheets_count => client.draft_timesheets.count }
+  # GET /clients/counts
+  # GET /clients/counts.xml
+  # GET /clients/counts.json
+  def counts
+    respond_with(Client.all_with_counts, :root => 'clients') do |format|
+      format.html { redirect_to clients_path }
     end
-    respond_with(@timesheets)
   end
 
   def recent

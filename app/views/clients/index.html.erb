@@ -27,4 +27,4 @@
 <%= link_to 'New client', new_client_path -%>
 
 <br/>
-<%= link_to 'Update draft timesheets count', draft_timesheets_count_clients_path, :remote => true, :'data-type' => :json, :id => 'update_client_details' -%>
+<%= link_to 'Update draft timesheets count', counts_clients_path, :remote => true, 'data-type' => :json, :id => 'update_draft_timesheets' -%>
