@@ -4,8 +4,10 @@
     %meta(http-equiv='Content-Type' content='text/html;charset=utf-8')
     %meta(http-equiv='Content-Script-Type' content='text/javascript')
     %title TR3W Time and Expenses
+    = javascript_include_tag 'jquery-1.4.2', 'rails.js', 'application.js'
+    = csrf_meta_tag
     = stylesheet_link_tag 'master'
-    = javascript_tag :defaults
+    = yield :head
   %body
     #header
       %h1= link_to @page_title || "Time and Expenses", root_path

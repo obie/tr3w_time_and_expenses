@@ -6,6 +6,7 @@ TimeAndExpenses::Application.routes.draw do |map|
     collection do
       get :recent
       get :newest
+      get :draft_timesheets_count
     end
 
     resources :billing_codes

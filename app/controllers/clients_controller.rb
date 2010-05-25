@@ -1,17 +1,29 @@
 class ClientsController < ApplicationController
-  respond_to :html, :xml
+  respond_to :html, :xml, :json
   # GET /clients
   # GET /clients.xml
+  # GET /clients.json
   def index
-    @clients = Client.where(params.except(:action, :controller, :format))
+    @clients = Client.where(params.except(:action, :controller, :format)).to_a # TODO: remove .to_a when Rails to_json bug fixed
     respond_with(@clients)
+  end
+
+  def draft_timesheets_count
+    @clients = Client.all
+    @timesheets = @clients.map do |client|
+      { :id => client.id, :draft_timesheets_count => client.draft_timesheets.count }
+    end
+    respond_with(@timesheets)
   end
 
   def recent
-    @clients = Client.recent
+    @clients = Client.recent.to_a # TODO: remove .to_a when Rails to_json bug fixed
     respond_with(@clients)
   end
 
+  # GET /clients/newest
+  # GET /clients/newest.xml
+  # GET /clients/newest.json
   def newest
     @client = Client.recent.first
     respond_with(@client)

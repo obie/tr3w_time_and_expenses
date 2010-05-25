@@ -13,4 +13,8 @@ class Client < ActiveRecord::Base
 
   validates_presence_of :name
 
+  def draft_timesheets
+    timesheets.draft.to_a # TODO: remove .to_a when Rails to_json bug fixed
+  end
+
 end
