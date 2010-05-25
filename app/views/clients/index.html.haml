@@ -1,0 +1,25 @@
+- content_for :head do
+  = javascript_include_tag 'clients.js'
+
+%h1 Listing clients
+
+%table#clients_list
+  %tr
+    %th Name
+    %th Code
+    %th Draft Timesheets
+
+  - for client in @clients
+    %tr[client]
+      %td=h client.name
+      %td=h client.code
+      %td.draft_timesheets_count=h client.timesheets.draft.count
+      %td= link_to 'Show', client_path(client)
+      %td= link_to 'Edit', edit_client_path(client)
+      %td= link_to 'Destroy', client_path(client), :confirm => 'Are you sure?', :method => :delete
+
+%br
+= link_to 'New client', new_client_path
+
+%br
+= link_to 'Update draft timesheets count', counts_clients_path, :remote => true, 'data-type' => :json, :id => 'update_draft_timesheets'
