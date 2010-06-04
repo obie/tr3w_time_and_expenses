@@ -1,6 +1,6 @@
 Client.delete_all
-Client.create(:name => 'Aardworkers', :code => 'AARD', :created_at => 2.years.ago)
-client = Client.create(:name => 'Zorganization', :code => 'ZORG')
+Client.create(:name => 'Aardworkers', :code => 'AARD', :created_at => 2.years.ago, :total_spend => 4321, :hottest_spend_day => Date::DAYNAMES.index("Saturday"))
+client = Client.create(:name => 'Zorganization', :code => 'ZORG', :total_spend => 9999, :hottest_spend_day => Date::DAYNAMES.index("Wednesday"))
 
 User.delete_all
 admin = User.create(:login => 'admin',

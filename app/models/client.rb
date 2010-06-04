@@ -10,6 +10,8 @@ class Client < ActiveRecord::Base
   has_many :users, :dependent => :destroy
 
   scope :recent, where("created_at > ?", 1.year.ago).order("created_at desc")
+  scope :by_spend, :order => "total_spend desc"
+  scope :by_hottest_spend_day, :group => "hottest_spend_day, total_spend, code", :order => "hottest_spend_day, total_spend desc"
 
   validates_presence_of :name
 

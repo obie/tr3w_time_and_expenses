@@ -5,18 +5,26 @@
 
 %table#clients_list
   %tr
+
+  - if (1..4).include? Date.today.wday # Sun - Thu
+    %th
     %th Name
     %th Code
+    %th Spend
     %th Draft Timesheets
-
-  - for client in @clients
-    %tr[client]
-      %td= client.name
-      %td= client.code
-      %td.draft_timesheets_count= client.timesheets.draft.count
-      %td= link_to 'Show', client_path(client)
-      %td= link_to 'Edit', edit_client_path(client)
-      %td= link_to 'Destroy', client_path(client), :confirm => 'Are you sure?', :method => :delete
+    - for client in @clients
+      = render :partial => "client_list", :locals => {:client => client}
+  - else
+    %th Day
+    %th Name
+    %th Code
+    %th Spend
+    %th Draft Timesheets
+    - for wday in (Date.today.wday..6).to_a + (0...Date.today.wday).to_a
+      %tr
+        %td= Date::DAYNAMES[wday]
+        - for client in Client.by_hottest_spend_day.where(:hottest_spend_day => wday)
+          = render :partial => "client_list", :locals => {:client => client}
 
 %br
 = link_to 'New client', new_client_path

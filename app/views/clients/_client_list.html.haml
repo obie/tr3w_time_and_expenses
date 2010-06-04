@@ -1,0 +1,13 @@
+%tr[client]
+%td
+%td= client.name
+%td= client.code
+%td $#{client.total_spend}
+%td.draft_timesheets_count
+  - if client.timesheets.draft.count > 3
+    %span.drafts-overlimit WARNING!
+    %br
+  = client.timesheets.draft.count
+%td= link_to 'Show', client_path(client)
+%td= link_to 'Edit', edit_client_path(client)
+%td= link_to 'Destroy', client_path(client), :confirm => 'Are you sure?', :method => :delete
