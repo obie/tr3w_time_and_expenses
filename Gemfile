@@ -7,5 +7,6 @@ gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem "factory_girl"
 gem "haml"
 gem "mysql"
+gem "rack-contrib"
 
 gem "rspec-rails"

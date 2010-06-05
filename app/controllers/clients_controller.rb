@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  respond_to :html, :xml, :json
+  respond_to :html, :xml, :json, :js
 
   # GET /clients
   # GET /clients.xml
@@ -15,6 +15,7 @@ class ClientsController < ApplicationController
   def counts
     respond_with(Client.all_with_counts, :root => 'clients') do |format|
       format.html { redirect_to clients_path }
+      format.js { render :js => Client.all_with_counts.to_json, :root => 'clients' }
     end
   end
 
