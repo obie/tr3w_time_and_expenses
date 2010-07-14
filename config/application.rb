@@ -16,4 +16,5 @@ end
 # Include your application configuration below
 # ExceptionNotifier.exception_recipients = %w( jhubert@gmail.com )
 
-require 'factory_girl'
+require 'factory_girl_rails'
+require 'rspec-rails'

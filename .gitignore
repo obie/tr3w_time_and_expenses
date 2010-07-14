@@ -3,10 +3,7 @@
 /doc/app
 /doc/plugins
 /log/*
-/tmp/cache/*
-/tmp/pids/*
-/tmp/sessions/*
-/tmp/sockets/*
+/tmp
 /vendor/gems
 /bin
 .DS_Store

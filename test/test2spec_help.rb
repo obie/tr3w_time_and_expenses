@@ -12,10 +12,10 @@
 class ActiveSupport::TestCase
   def self.fixture_path=(p)
   end
-  
+
   def self.use_transactional_fixtures=(f)
   end
-  
+
   def self.fixture_table_names=(*args)
   end
 
@@ -30,7 +30,7 @@ class ActiveSupport::TestCase
 
   def self.pre_loaded_fixtures=(*args)
   end
-  
+
   def self.fixtures(*table_names)  
   end
 end

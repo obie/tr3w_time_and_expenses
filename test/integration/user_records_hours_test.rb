@@ -1,7 +1,7 @@
-require "#{File.dirname(__FILE__)}/../test_helper"
+require "test_helper"
 
 class UserRecordsHoursTest < ActionController::IntegrationTest
-  
+
   fixtures :users, :billable_weeks, :billing_codes, :clients, :timesheets
 
   def setup
@@ -19,6 +19,7 @@ class UserRecordsHoursTest < ActionController::IntegrationTest
 
       post("billable_weeks/add_to_timesheet",
         :timesheet_id => timesheet.id,
+        :date => { :year => 2010, :month => 7, :day => 14 },
         :billable_week => {
         :client_id => 3,
         :start_date => "December 4 2006",

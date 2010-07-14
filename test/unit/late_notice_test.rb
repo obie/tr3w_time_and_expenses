@@ -1,10 +1,10 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class LateNoticeTest < ActiveSupport::TestCase
   FIXTURES_PATH = File.dirname(__FILE__) + '/../fixtures'
   CHARSET = "utf-8"
 
-  include ActionMailer::Quoting
+  # include ActionMailer::Quoting
 
   def setup
     ActionMailer::Base.delivery_method = :test
@@ -15,7 +15,7 @@ class LateNoticeTest < ActiveSupport::TestCase
     @expected.content_type "text/plain;charset=#{CHARSET}"
     @expected.mime_version = '1.0'
   end
-  
+
   def test_nothing
   end
 

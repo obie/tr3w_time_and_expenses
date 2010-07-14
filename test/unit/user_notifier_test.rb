@@ -1,11 +1,9 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 require 'user_notifier'
 
 class UserNotifierTest < ActiveSupport::TestCase
   FIXTURES_PATH = File.dirname(__FILE__) + '/../fixtures'
   CHARSET = "utf-8"
-
-  include ActionMailer::Quoting
 
   def setup
     ActionMailer::Base.delivery_method = :test
@@ -15,7 +13,7 @@ class UserNotifierTest < ActiveSupport::TestCase
     @expected = Mail.new
     @expected.content_type "text/plain;charset=#{CHARSET}"
   end
-  
+
   def test_true
     assert true
   end

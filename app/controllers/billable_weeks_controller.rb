@@ -1,7 +1,13 @@
 class BillableWeeksController < ApplicationController
   def add_to_timesheet
     @billable_week = BillableWeek.new(params[:billable_week])
-    y, m, d = params[:date].values_at(:year, :month, :day).map {|n| n.to_i }
+
+    if params[:date].blank?
+      flash[:error] = "Date required"
+      redirect_to :back
+    end
+
+    y, m, d = params[:date].values_at(:year, :month, :day).map(&:to_i)
     @billable_week.start_date = Date.new(y,m,d)
 
     @timesheet = Timesheet.find(params[:timesheet_id])
